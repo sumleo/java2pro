@@ -1,0 +1,59 @@
+
+
+import java.time.LocalDate;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class earthQuakeTableUtil {
+    public static ObservableList<earthQuake> getEarthQuakeList(){
+    	earthQuake e1 = new earthQuake(22.5, 116.4, 9.0, "Japan", LocalDate.of(2012, 12, 12));
+		return FXCollections.<earthQuake>observableArrayList(e1);
+    }
+    
+  // return longitude TableColumn
+    public static TableColumn<earthQuake, Double> getLongitude(){
+    	TableColumn<earthQuake, Double> longitudeCol = new TableColumn<earthQuake, Double>("Longitude");
+    	longitudeCol.setCellValueFactory(new PropertyValueFactory<>("longitude"));
+    //	longitudeCol.setMinWidth(longitudeCol.getPrefWidth());
+    	longitudeCol.setMinWidth(100);
+    	return longitudeCol;
+    }
+    
+  // return latitude TableColumn
+    public static TableColumn<earthQuake, Double> getLatitude(){
+    	TableColumn<earthQuake, Double> latitudeCol = new TableColumn<earthQuake, Double>("Latitude");
+    	latitudeCol.setCellValueFactory(new PropertyValueFactory<>("latitude"));
+   // 	latitudeCol.setMinWidth(latitudeCol.getPrefWidth());
+    	latitudeCol.setMinWidth(100);
+    	return latitudeCol;
+    }
+    
+  // return magnitude TableColumn
+    public static TableColumn<earthQuake, Double> getMagnitude(){
+    	TableColumn<earthQuake, Double> magnitudeCol = new TableColumn<earthQuake, Double>("Magnitude");
+    	magnitudeCol.setCellValueFactory(new PropertyValueFactory<>("magnitude"));
+   //   magnitudeCol.setMinWidth(magnitudeCol.getPrefWidth());
+    	magnitudeCol.setMinWidth(100);
+    	return magnitudeCol;
+    }	
+    
+   // return country TableColumn
+   public static TableColumn<earthQuake, String> getCountry(){
+	   TableColumn<earthQuake, String> countryCol = new TableColumn<earthQuake, String>("Country");
+	   countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
+	   countryCol.setMinWidth(300);
+	   return countryCol;
+   }
+    
+   // return date TableColumn
+    	public static TableColumn<earthQuake, LocalDate> getDate(){
+    		TableColumn<earthQuake, LocalDate> dateCol = new TableColumn<earthQuake, LocalDate>("Date");
+    		dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+    	//	dateCol.setMinWidth(dateCol.getPrefWidth());
+    		dateCol.setMinWidth(100);
+    		return dateCol;
+    	}
+}
