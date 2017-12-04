@@ -1,0 +1,67 @@
+
+
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class earthQuakeTableView extends Application{
+ public static void main(String [] args){
+	 launch(args);
+ }
+    @SuppressWarnings("unchecked")
+	@Override
+    public void start(Stage stage){
+    // create  labels
+    	final Label startLab = new Label("Start Time");
+    	startLab.setFont(new Font("Arial", 20));
+    	
+    	final Label endLab = new Label("End Time");
+    	endLab.setFont(new Font("Arial", 20));
+    	
+    	final Label magnitude = new Label("Magnitude");
+    	magnitude.setFont(new Font("Arial", 20));
+    	
+    // create text field 	
+    	final TextField start = new TextField();
+    	
+    	final TextField end = new TextField();
+    
+    // create a slider
+    	final Slider mag = new  Slider();
+    	
+    // create search button	
+    	final Button searchButton = new Button("Search");
+  
+    // Create a table	
+    	TableView<earthQuake> table = new TableView<earthQuake>(earthQuakeTableUtil.getEarthQuakeList());
+    	table.getColumns().addAll(earthQuakeTableUtil.getLongitude(),
+    			earthQuakeTableUtil.getLatitude(),
+    			earthQuakeTableUtil.getMagnitude(),
+    			earthQuakeTableUtil.getCountry(),
+    			earthQuakeTableUtil.getDate());
+    	VBox root = new VBox();
+    	root.setSpacing(10);
+    	table.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+    	HBox hb = new HBox(table);
+    	root.getChildren().addAll(startLab, start, endLab, end, magnitude, mag, searchButton,hb);
+    	root.setStyle("-fx-padding: 10;" +
+    	              "-fx-border-style: solid inside;" +
+    			      "-fx-border-insets: 5;" +
+    	              "-fx-border-color: blue;");
+    	Scene scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.setTitle("earthQuake Table");
+    	stage.show();
+    }
+}
