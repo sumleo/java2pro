@@ -1,7 +1,5 @@
 
 
-import java.time.LocalDate;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -9,7 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class earthQuakeTableUtil {
     public static ObservableList<earthQuake> getEarthQuakeList(){
-    	earthQuake e1 = new earthQuake(22.5, 116.4, 9.0, "Japan", LocalDate.of(2012, 12, 12));
+    	earthQuake e1 = new earthQuake(22.5, 116.4, 9.0, "Japan", "2012, 12, 12 13:14:21");
 		return FXCollections.<earthQuake>observableArrayList(e1);
     }
     
@@ -49,11 +47,11 @@ public class earthQuakeTableUtil {
    }
     
    // return date TableColumn
-    	public static TableColumn<earthQuake, LocalDate> getDate(){
-    		TableColumn<earthQuake, LocalDate> dateCol = new TableColumn<earthQuake, LocalDate>("Date");
+    	public static TableColumn<earthQuake, String > getDate(){
+    		TableColumn<earthQuake, String > dateCol = new TableColumn<earthQuake, String >("Date");
     		dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
     	//	dateCol.setMinWidth(dateCol.getPrefWidth());
-    		dateCol.setMinWidth(100);
+    		dateCol.setMinWidth(200);
     		return dateCol;
     	}
 }
