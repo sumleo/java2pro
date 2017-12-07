@@ -1,25 +1,21 @@
 
 
-import java.time.LocalDate;
-
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public final class earthQuake {
-	// ��������
+	// attributes
     private final SimpleDoubleProperty longitude = new SimpleDoubleProperty();
     private final SimpleDoubleProperty latitude = new SimpleDoubleProperty();
     private final SimpleDoubleProperty magnitude = new SimpleDoubleProperty();
-    private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    private final SimpleStringProperty date = new SimpleStringProperty();
     private final SimpleStringProperty country = new SimpleStringProperty();
-        // ������
+        //constructor
         public earthQuake(){
         	
         }
         
-        public earthQuake(Double longitude, Double latitude, Double magnitude, String country, LocalDate date){
+        public earthQuake(Double longitude, Double latitude, Double magnitude, String country, String  date){
         	this.longitude.set(longitude);
         	this.latitude.set(latitude);
         	this.magnitude.set(magnitude);
@@ -61,13 +57,13 @@ public final class earthQuake {
 		}
    
    // Date property
-		public final LocalDate getDate(){
+		public final String getDate(){
 			return date.get();
 		}
-		public final void setDate(LocalDate localdate){
+		public final void setDate(String localdate){
 			dateProperty().set(localdate);
 		}
-		public ObjectProperty<LocalDate> dateProperty() {
+		public SimpleStringProperty dateProperty() {
 			return date;
 		}
    
