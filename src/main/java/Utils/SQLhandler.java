@@ -20,6 +20,8 @@ public class SQLhandler {
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("countryname"));
             }
+            if (connection != null) connection.close();
+            if (statement != null) statement.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
