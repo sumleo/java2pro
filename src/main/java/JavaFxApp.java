@@ -1,27 +1,27 @@
 
 
+import Crawler.CralwerInitial;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
-
 public class JavaFxApp extends Application {
+    /**
+     * Initial the stage
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../java/MainGUI.fxml"));
-
-            primaryStage.setTitle("My Application");
+            CralwerInitial cralwerInitial = new CralwerInitial();
+            cralwerInitial.start();
+            Parent root = FXMLLoader.load(getClass().getResource("MainGUI.fxml"));
+            primaryStage.setTitle("Earquakes");
+            primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (Exception e) {
@@ -30,7 +30,11 @@ public class JavaFxApp extends Application {
 
     }
 
-
+    /**
+     * main function
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

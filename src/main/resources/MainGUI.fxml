@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="600.0" maxWidth="960.0" minHeight="600.0" minWidth="960.0" prefHeight="600.0" prefWidth="960.0"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GUIController">
+    <children>
+        <GridPane fx:id="queryGrid" hgap="20.0" prefHeight="201.0" prefWidth="960.0" vgap="20.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="819.0" minWidth="10.0" prefWidth="441.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="499.0" minWidth="10.0" prefWidth="499.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="39.0" minHeight="29.0" prefHeight="29.0"/>
+                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="45.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <HBox prefHeight="30.0" prefWidth="458.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Region:">
+                            <font>
+                                <Font name="Roboto Medium" size="24.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets top="10.0"/>
+                            </HBox.margin>
+                        </Text>
+                        <ChoiceBox fx:id="region" prefHeight="30.0" prefWidth="236.0" value="World Wide">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                </FXCollections>
+                            </items>
+                            <HBox.margin>
+                                <Insets left="30.0" top="5.0"/>
+                            </HBox.margin>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </ChoiceBox>
+                    </children>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </HBox>
+                <HBox prefHeight="76.0" prefWidth="470.0" spacing="5.0" GridPane.halignment="CENTER"
+                      GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                    <children>
+                        <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="From:">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Roboto Medium" size="24.0"/>
+                            </font>
+                        </Text>
+                        <DatePicker fx:id="from" maxWidth="268.0" prefHeight="30.0" prefWidth="268.0">
+                            <HBox.margin>
+                                <Insets left="30.0"/>
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <GridPane.margin>
+                        <Insets top="10.0"/>
+                    </GridPane.margin>
+                </HBox>
+                <HBox prefHeight="150.0" prefWidth="300.0" GridPane.rowIndex="2">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Magnitude &gt;=">
+                            <HBox.margin>
+                                <Insets left="10.0" right="8.0" top="10.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Roboto Medium" size="24.0"/>
+                            </font>
+                        </Text>
+                        <Slider fx:id="mag" blockIncrement="1.0" majorTickUnit="1.0" max="9.0" maxWidth="203.0"
+                                min="1.0" minorTickCount="0" onMouseDragged="#changeMagText" prefHeight="21.0"
+                                prefWidth="189.0" showTickLabels="true" showTickMarks="true" value="1.0">
+                            <HBox.margin>
+                                <Insets left="10.0" top="20.0"/>
+                            </HBox.margin>
+                        </Slider>
+                        <Text fx:id="magText" strokeType="OUTSIDE" strokeWidth="0.0" text="1.0">
+                            <HBox.margin>
+                                <Insets left="8.0" top="14.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Roboto Medium" size="21.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox prefHeight="150.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Roboto Medium" size="24.0"/>
+                            </font>
+                        </Text>
+                        <DatePicker fx:id="to" maxWidth="268.0" prefHeight="30.0" prefWidth="238.0">
+                            <HBox.margin>
+                                <Insets left="80.0"/>
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                    <GridPane.margin>
+                        <Insets top="10.0"/>
+                    </GridPane.margin>
+                </HBox>
+                <Text fx:id="output" fill="#193000" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome"
+                      wrappingWidth="240.73681640625" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </Text>
+                <Text fx:id="output1" fill="#193000" strokeType="OUTSIDE" strokeWidth="0.0" text="EarthQuakes Visible"
+                      wrappingWidth="324.73681640625">
+                    <font>
+                        <Font name="Roboto Medium" size="30.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="10.0"/>
+                    </GridPane.margin>
+                </Text>
+                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                    <children>
+                        <Button fx:id="search" alignment="CENTER" maxHeight="30.0" minHeight="30.0"
+                                mnemonicParsing="false" onMouseClicked="#search" prefHeight="30.0" prefWidth="95.0"
+                                text="Search">
+                            <font>
+                                <Font name="Roboto Medium" size="14.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="285.0" top="3.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <ParallelCamera/>
+            </children>
+        </GridPane>
+        <TabPane prefHeight="429.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Data">
+                    <content>
+                        <AnchorPane maxWidth="984.0" minWidth="960.0" prefHeight="474.0" prefWidth="984.0">
+                            <children>
+                                <HBox alignment="CENTER" layoutX="-4.0" layoutY="12.0" prefHeight="346.0"
+                                      prefWidth="950.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0"
+                                      AnchorPane.topAnchor="12.0">
+                                    <children>
+                                        <PointLight color="CHARTREUSE" lightOn="true" rotate="68.2"/>
+                                        <TableView fx:id="data" prefHeight="364.0" prefWidth="934.0">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" text="ID">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="id"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+
+                                                <TableColumn prefWidth="145.0" text="UTC Date">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dis_Date"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="118.0" text="Latitude">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="latitude"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="114.0" text="Longitude">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="longitude"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="130.0" text="Depth (km)">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="depth"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="119.0" text="Magnitude">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="magnitude"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="232.0" text="Region">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="region"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Chart By Magnitude">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                            <children>
+                                <BarChart fx:id="chartByMag" layoutX="-1.0" layoutY="-8.0" prefHeight="378.0"
+                                          prefWidth="960.0" title="EarthQuakes By Magnitude">
+                                    <xAxis>
+                                        <CategoryAxis fx:id="cateMag" label="Magnitude" prefHeight="46.0"
+                                                      prefWidth="738.0" side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Chart By Date">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <BarChart fx:id="chartByDate" layoutX="21.0" layoutY="-7.0" prefHeight="360.0"
+                                          prefWidth="944.0" title="Earthquake By Date" AnchorPane.leftAnchor="8.0"
+                                          AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
+                                    <xAxis>
+                                        <CategoryAxis prefHeight="42.0" prefWidth="738.0" side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Mercator Map">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
+                            <children>
+                                <HBox fx:id="mercatorH" alignment="CENTER" layoutX="144.0" layoutY="100.0"
+                                      prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="8.0"
+                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                      AnchorPane.topAnchor="8.0">
+                                    <children>
+                                        <Canvas fx:id="mercator" height="355.0" width="710.0" HBox.hgrow="NEVER">
+                                            <HBox.margin>
+                                                <Insets/>
+                                            </HBox.margin>
+                                        </Canvas>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Eckert_IV Map">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
+                            <children>
+                                <HBox fx:id="eckertH" alignment="CENTER" layoutX="144.0" layoutY="100.0"
+                                      prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0"
+                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                      AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Canvas fx:id="eckert" height="350.0" width="700.0" HBox.hgrow="NEVER">
+                                            <HBox.margin>
+                                                <Insets/>
+                                            </HBox.margin>
+                                        </Canvas>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+    <padding>
+        <Insets top="10.0"/>
+    </padding>
+</VBox>

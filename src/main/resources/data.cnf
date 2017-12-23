@@ -1,0 +1,8 @@
+#The db file path
+dataSource = jdbc:sqlite:D:\\earthquakes-1.sqlite
+#The db driver name
+dbDriver=org.sqlite.JDBC
+#Don't add the parameter with page number
+url=https://www.emsc-csem.org/Earthquake/?view=
+#csv location
+csvLocation=D:\\1.csv
